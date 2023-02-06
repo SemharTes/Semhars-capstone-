@@ -28,3 +28,5 @@ class Symptom(db.Model):
             "symptom_id": self.symptom_id,
             "description_url": self.description_url
         }
+
+        # pushing this to github

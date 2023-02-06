@@ -94,3 +94,4 @@ def update_symptom(symptom_id):
     return make_response(f"symptom #{symptom_id} is updated.")
 
 
+#  pushing changes to github
