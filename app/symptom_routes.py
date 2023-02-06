@@ -59,3 +59,38 @@ def delete_symptom(symptom_id):
     db.session.commit()
     
     return make_response("success deleting",200)
+
+# put request (replacing the entire resource with given data)
+@symptoms_bp.route("/<symptom_id>", methods=["PUT"])
+def change_symptom(symptom_id):
+    symptom = validate_model(Symptom, symptom_id)
+    request_body = request.get_json()
+
+    #updating the attributes
+    symptom.title = request_body["title"]
+    symptom.description = request_body["description"]
+    symptom.description_url = request_body["description_url"]
+
+    # commit changes to our db
+    db.session.commit()
+
+    return make_response(f"symptom #{symptom_id} is changed.")
+
+
+# patch request (replacing only specified fields)
+@symptoms_bp.route("/<symptom_id>", methods=["PATCH"])
+def update_symptom(symptom_id):
+    symptom = validate_model(Symptom, symptom_id)
+    request_body = request.get_json()
+
+    if "title" in request_body:
+        symptom.title = request_body["title"]
+    if "description" in request_body:
+        symptom.description = request_body["description"]
+    if "description_url" in request_body:
+        symptom.description_url = request_body["description_url"]
+
+    db.session.commit()
+    return make_response(f"symptom #{symptom_id} is updated.")
+
+
