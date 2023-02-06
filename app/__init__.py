@@ -22,10 +22,13 @@ def create_app():
     # Import models here for Alembic setup
     # from app.models.ExampleModel import ExampleModel
     from app.models.symptom import Symptom
+    from app.models.admin import Admin
 
     # Register Blueprints
     from .symptom_routes import symptoms_bp
     app.register_blueprint(symptoms_bp)
+    from .admin_routes import admin_bp
+    app.register_blueprint(admin_bp)
 
     CORS(app)
 
