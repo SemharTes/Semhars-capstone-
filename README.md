@@ -24,7 +24,7 @@ An API to be able to create, read, update and delete symptoms. And make changes 
 ```bash
   $ pip install -r requirements.txt
 ```
-- Create database
+- Create the database
 - Create .env file that will hold your database URLs
 - Run ```
   $ flask db init```
